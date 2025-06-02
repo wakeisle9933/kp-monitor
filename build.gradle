@@ -21,7 +21,22 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-	runtimeOnly 'com.h2database:h2'
+	implementation 'org.springframework.boot:spring-boot-starter-validation'
+	implementation 'com.h2database:h2'
+	
+	// Lombok
+	compileOnly 'org.projectlombok:lombok'
+	
+	// MapStruct
+	implementation 'org.mapstruct:mapstruct:1.5.5.Final'
+	
+	// Annotation Processors (순서 중요: Lombok 먼저, MapStruct 나중에)
+	annotationProcessor 'org.projectlombok:lombok'
+	annotationProcessor 'org.mapstruct:mapstruct-processor:1.5.5.Final'
+	
+	// Springdoc OpenAPI (Swagger)
+	implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.7.0'
+	
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }

@@ -58,3 +58,9 @@ logs/
 *.tmp
 *.temp
 *.bak
+
+### H2 Database 파일 ###
+data/
+*.db
+*.trace.db
+*.lock.db

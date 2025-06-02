@@ -1,0 +1,55 @@
+# Local 환경 설정
+
+# 서버 설정
+server:
+  port: 8080  # 로컬 개발 포트
+
+spring:
+  # H2 데이터베이스 설정 (로컬 개발용)
+  datasource:
+    url: jdbc:h2:file:./data/kpmonitor;MODE=MySQL
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+  
+  # H2 콘솔 활성화
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+  
+  # SQL 초기화 설정
+  sql:
+    init:
+      mode: always
+      schema-locations: classpath:schema.sql
+      data-locations: classpath:data.sql
+      enabled: true
+      continue-on-error: true
+  
+  # JPA 설정
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: none
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+    defer-datasource-initialization: true
+
+# 애플리케이션 설정
+app:
+  data:
+    initialize-test-data: true
+
+# Swagger 설정 (개발 환경에서만 활성화)
+springdoc:
+  api-docs:
+    enabled: true
+    path: /api-docs
+  swagger-ui:
+    enabled: true
+    path: /swagger-ui.html
+    tags-sorter: alpha
+    operations-sorter: alpha
